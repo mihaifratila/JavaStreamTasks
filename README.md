@@ -1,7 +1,10 @@
 # Home Tasks Solved Problems for the Lambda, Functional Interfaces, Stream API Module
 
 ## Running the tests
-Run the following command in the terminal
+Find the TestNG Test Runner XML file located in src/test/java/resources
+Right-click -> Run
+
+Additionaly, you can run the following command in the terminal
 ```
 mvn test
 ```
