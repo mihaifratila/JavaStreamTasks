@@ -1,6 +1,6 @@
 package org.java8.tasks;
 
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 import java.util.List;
 

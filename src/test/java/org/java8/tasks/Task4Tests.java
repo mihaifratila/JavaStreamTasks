@@ -1,6 +1,6 @@
 package org.java8.tasks;
 
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 import java.util.List;
 import java.util.Map;
@@ -12,6 +12,7 @@ public class Task4Tests {
 
     private static final List<List<Integer>> integerData = getList();
     private static final String[][] stringData = getDataArray();
+    private static final List<Integer> numbersListData = getNumbersList();
     private static final Map<String, List<String>> mapData = getPeopleMap();
 
 
@@ -33,6 +34,18 @@ public class Task4Tests {
         List<String> expectedResult = List.of("a", "b", "c", "d", "e", "f", "g", "h");
 
         assertEquals(actualResult, expectedResult);
+    }
+
+    @Test
+    public void whenCollectingToMapFromList_thenReturnNumberOfOccurrencesAsValues() {
+
+        Map<Integer, Integer> actualResult = getMapWithNumberOfElementOccurrencesFromList(numbersListData);
+
+        Map<Integer, Integer> expectedResult = Map.of(1, 2, 2, 1, 3, 3, 4,
+                                                      1, 5, 1, 6, 3, 7, 1);
+
+        assertEquals(actualResult, expectedResult);
+
     }
 
     @Test

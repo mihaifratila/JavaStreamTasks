@@ -1,13 +1,13 @@
 package org.java8.tasks;
 
 
-import org.junit.Test;
+import org.testng.annotations.Test;
 import java.util.List;
 
-import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.Assert.assertEquals;
 
 public class Task1Tests {
-    private static List<Integer> testValues = Task1.getValues();
+    private static final List<Integer> testValues = Task1.getValues();
 
     @Test
     public void whenFilteringStream_thenGetEvenValues() {

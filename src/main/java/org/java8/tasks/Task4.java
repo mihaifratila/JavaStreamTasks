@@ -1,6 +1,7 @@
 package org.java8.tasks;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class Task4 {
@@ -8,6 +9,8 @@ public class Task4 {
     private static final List<List<Integer>> list;
     private static final String[][] dataArray = new String[][]{{"a", "b", "c"},
             {"c", "d", "e"}, {"e", "f", "g"}, {"e", "g", "h"}};
+    public static final ArrayList<Integer> numbersList =
+            new ArrayList<>(Arrays.asList(1, 1, 2, 3, 3, 3, 4, 5, 6, 6, 6, 7));
     private static final Map<String, List<String>> peopleMap;
 
     static {
@@ -16,7 +19,7 @@ public class Task4 {
     }
 
     private static List<List<Integer>> initializeList() {
-       List<List<Integer>> newList = new ArrayList<List<Integer>>();
+       List<List<Integer>> newList = new ArrayList<>();
         newList.add(Arrays.asList(1, 2, 3));
         newList.add(Arrays.asList(4, 5, 6));
         newList.add(Arrays.asList(7, 8, 9));
@@ -40,6 +43,7 @@ public class Task4 {
     public static String[][] getDataArray() {
         return dataArray;
     }
+    public static List<Integer> getNumbersList() { return numbersList; }
 
     public static Map<String, List<String>> getPeopleMap() {
         return peopleMap;
@@ -55,6 +59,9 @@ public class Task4 {
 
         List<Character> lettersList = getLettersFromMapValuesWithFlatMap(peopleMap);
         printWithStream(lettersList);
+
+        Map<Integer, Integer> numbersMap = getMapWithNumberOfElementOccurrencesFromList(numbersList);
+        numbersMap.forEach((key, value) -> System.out.println("key: " + key + " value: " + value));
     }
 
     // 11
@@ -72,9 +79,19 @@ public class Task4 {
                 .collect(Collectors.toList());
     }
 
+    // 13
+    public static Map<Integer, Integer> getMapWithNumberOfElementOccurrencesFromList(List<Integer> list) {
+        return list.stream()
+                .collect(Collectors.toMap(
+                        Function.identity(),  // Use the element itself as the key.
+                        e -> 1,  // Map each element to 1 (to count occurrences).
+                        Integer::sum  // Add values together for same keys.
+                ));
+    }
+
     // 14
     public static List<Character> getLettersFromMapValuesWithFlatMap(Map<String, List<String>> data) {
-        return peopleMap.values().stream()
+        return data.values().stream()
                 .flatMap(List::stream)
                 .flatMapToInt(CharSequence::chars)
                 .mapToObj(c -> (char) c)

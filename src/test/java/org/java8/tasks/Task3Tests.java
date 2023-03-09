@@ -1,13 +1,14 @@
 package org.java8.tasks;
 
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.assertFalse;
+import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertEquals;
-import static org.java8.tasks.Task3.*;
 import static org.testng.Assert.assertTrue;
+
+import static org.java8.tasks.Task3.*;
 
 public class Task3Tests {
     private final static List<String> namesList = getNamesList();
