@@ -10,6 +10,12 @@ mvn test
 ```
 
 ## Home Tasks Requirements:
+Don’t use: if-else, char, switch-case
+Use: stream, java 8+
+
+IMPORTANT:
+1. Implement Unit Tests for each task.
+
  - Task 1:
 
 1. Show in console Stream<Integer> stream = Stream.of(1,2,3,4,5,6,7,8,9);
